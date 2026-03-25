@@ -163,10 +163,11 @@ export default function TheProblem() {
       <div className="red-rule" />
 
       {/* The Pattern */}
-      <section style={{ backgroundColor: "#0D1B2A", padding: "4rem 0" }}>
+      <section style={{ backgroundColor: "#F5F0E8", padding: "4rem 0" }}>
         <div className="container">
-          <div className="max-w-3xl mb-10">
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", color: "#F5F0E8", marginBottom: "1rem" }}>
+          <div className="max-w-3xl">
+            <div className="section-label" style={{ color: "#D4A84B" }}>The Pattern</div>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", color: "#0D1B2A", marginBottom: "1.5rem" }}>
               The Pattern
             </h2>
             <p style={{ color: "#A8BFCC", lineHeight: 1.75, marginBottom: "1rem" }}>
@@ -182,8 +183,8 @@ export default function TheProblem() {
 
           {/* Structural Failures Accordion */}
           <div className="mb-4">
-            <div className="section-label mb-4">The Structural Failures</div>
-            <p style={{ color: "#8FA3B8", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
+            <div className="section-label mb-4" style={{ color: "#D4A84B" }}>The Structural Failures</div>
+            <p style={{ color: "#5A6B7A", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
               Each failure is named, sourced, and connected to the leverage point where intervention is most effective. Click to expand.
             </p>
             {STRUCTURAL_FAILURES.map((f) => (
@@ -198,7 +199,7 @@ export default function TheProblem() {
           <p style={{ color: "#8FA3B8", fontSize: "0.875rem", marginBottom: "1rem", maxWidth: "700px" }}>
             This is the documented chronology of structural changes — executive orders, agency actions, legislative moves, and deployments — that constitute the pattern described above. This is not analysis. This is the record.
           </p>
-          <div style={{ backgroundColor: "#162236", border: "1px solid rgba(255,255,255,0.06)", padding: "1rem", overflowX: "auto" }}>
+          <div style={{ backgroundColor: "#FFFFFF", border: "1px solid #D4C8B8", padding: "1rem", overflowX: "auto" }}>
             <a href={DIAGRAM_TIMELINE} target="_blank" rel="noopener noreferrer" style={{ display: "block", position: "relative" }}>
               <img
                 src={DIAGRAM_TIMELINE}
@@ -218,7 +219,7 @@ export default function TheProblem() {
       </section>
 
       {/* Structural Response */}
-      <section style={{ backgroundColor: "#080F1A", padding: "4rem 0" }}>
+      <section style={{ backgroundColor: "#0D1B2A", padding: "4rem 0" }}>
         <div className="container">
           <div className="max-w-3xl">
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", color: "#F5F0E8", marginBottom: "1rem" }}>
