@@ -1,17 +1,16 @@
 /*
  * UNRIG USA — Layout Component
- * Design: Dark navy header with logo, hamburger nav, full footer with social links
- * Typography: Space Grotesk for nav, Playfair Display for logo text
+ * Design: Navy header with 5-star logo, responsive nav, full footer with social links
+ * Typography: Space Grotesk for nav, Playfair Display for headings
  */
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663417942949/KiUG5xHiTpMVK9Gs3TakrN/unrig-logo_681ead19.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663417942949/KiUG5xHiTpMVK9Gs3TakrN/unrig-logo-5stars-Zv7LwHyhyXuXb5DE757ES5.webp";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/the-problem", label: "The Problem" },
   { href: "/framework", label: "Why Systems" },
@@ -19,9 +18,6 @@ const NAV_LINKS = [
   { href: "/recognize", label: "Recognize It" },
   { href: "/action", label: "Take Action" },
   { href: "/research", label: "Research" },
-  { href: "/news", label: "News" },
-  { href: "/team", label: "Team" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const SOCIAL_LINKS = [
@@ -91,7 +87,7 @@ function SocialIcon({ icon, href, label }: { icon: string; href: string; label: 
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="social-icon w-8 h-8 flex items-center justify-center"
+      className="w-10 h-10 flex items-center justify-center bg-secondary-foreground/10 hover:bg-primary hover:text-primary-foreground rounded transition-colors"
     >
       {icons[icon]}
     </a>
@@ -104,348 +100,193 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [emailValue, setEmailValue] = useState("");
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
 
   useEffect(() => {
     setMobileOpen(false);
     window.scrollTo(0, 0);
   }, [location]);
 
+  const handleEmailSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!emailValue.trim()) return;
+
+    try {
+      await fetch("https://n8n.cloudpublica.org/webhook/unrig-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailValue }),
+      });
+      setEmailSubmitted(true);
+      setEmailValue("");
+      setTimeout(() => setEmailSubmitted(false), 3000);
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#0D1B2A" }}>
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Header */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          backgroundColor: scrolled ? "rgba(13,27,42,0.97)" : "#0D1B2A",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(255,255,255,0.04)",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-        }}
-      >
-        <div className="container">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 no-underline">
-              <img
-                src={LOGO_URL}
-                alt="Unrig USA"
-                className="w-10 h-10 object-contain"
-              />
-              <div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.125rem", color: "#F5F0E8", lineHeight: 1.1 }}>
-                  UNRIG USA
-                </div>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", color: "#8FA3B8", textTransform: "uppercase" }}>
-                  501(c)(4) Nonpartisan
-                </div>
+      <header className="bg-secondary text-secondary-foreground sticky top-0 z-50 border-b border-border">
+        <div className="container py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0 no-underline">
+            <img src={LOGO_URL} alt="Unrig USA" className="h-12 w-12" />
+            <div className="hidden sm:block">
+              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 800, fontSize: "1rem", lineHeight: 1.1 }}>
+                UNRIG USA
               </div>
-            </Link>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.08em", opacity: 0.75, textTransform: "uppercase" }}>
+                501(c)(4) Nonpartisan
+              </div>
+            </div>
+          </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-6">
-              {NAV_LINKS.slice(1, 8).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`nav-link ${location === link.href ? "active" : ""}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link href="/contact" className="btn-primary text-sm py-2 px-4">
-                Contact
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-6">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors ${location === link.href ? "text-primary" : "hover:text-primary"}`}
+              >
+                {link.label}
               </Link>
-            </nav>
+            ))}
+          </nav>
 
-            {/* Mobile hamburger */}
-            <button
-              className="lg:hidden p-2"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle navigation"
-              style={{ color: "#F5F0E8" }}
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Link
+              href="/contact"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded font-semibold text-sm hover:opacity-90 transition-opacity"
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              Contact
+            </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-2 hover:bg-secondary-foreground/10 rounded transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {/* Mobile Nav Drawer */}
+        {/* Mobile Navigation */}
         {mobileOpen && (
-          <div
-            className="lg:hidden"
-            style={{
-              backgroundColor: "#0D1B2A",
-              borderTop: "1px solid rgba(255,255,255,0.08)",
-              maxHeight: "calc(100vh - 64px)",
-              overflowY: "auto",
-            }}
-          >
-            <div className="container py-4">
-              {/* Pipeline indicator */}
-              <div className="mb-4 pb-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#8FA3B8", textTransform: "uppercase" }}>
-                  Name → Understand → Act
-                </div>
-              </div>
+          <div className="lg:hidden border-t border-border bg-secondary">
+            <nav className="container py-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center justify-between py-3 no-underline"
-                  style={{
-                    borderBottom: "1px solid rgba(255,255,255,0.04)",
-                    color: location === link.href ? "#F5F0E8" : "#A8BFCC",
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontWeight: location === link.href ? 600 : 400,
-                  }}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium hover:text-primary transition-colors py-2"
                 >
                   {link.label}
-                  <ChevronRight size={14} style={{ color: "#C41E3A" }} />
                 </Link>
               ))}
-              <div className="pt-4 pb-2">
-                <Link href="/action" className="btn-primary w-full text-center block">
-                  Take Action
-                </Link>
-              </div>
-            </div>
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="px-4 py-2 bg-primary text-primary-foreground rounded font-semibold text-sm hover:opacity-90 transition-opacity inline-block"
+              >
+                Contact
+              </Link>
+            </nav>
           </div>
         )}
       </header>
 
-      {/* Page content — push down by header height */}
-      <main className="flex-1" style={{ paddingTop: "64px" }}>
-        {children}
-      </main>
+      {/* Main Content */}
+      <main className="flex-grow">{children}</main>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: "#080F1A", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        {/* Email signup */}
-        <div style={{ backgroundColor: "#0D1B2A", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-          <div className="container py-12">
-            <div className="max-w-2xl">
-              <div className="section-label">Stay Informed</div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", color: "#F5F0E8", marginBottom: "0.5rem" }}>
-                You're not alone anymore.
-              </h3>
-              <p style={{ color: "#8FA3B8", fontSize: "0.9375rem", marginBottom: "1.5rem" }}>
-                Get the 20 Safeguards PDF and the Vocabulary Guide. Watch your inbox.
-              </p>
-              <FooterEmailSignup />
-            </div>
-          </div>
-        </div>
-
-        {/* Main footer */}
+      <footer className="bg-secondary text-secondary-foreground border-t border-border">
         <div className="container py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Logo + mission */}
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <img src={LOGO_URL} alt="Unrig USA" className="w-12 h-12 object-contain" />
-                <div>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.25rem", color: "#F5F0E8" }}>
-                    UNRIG USA
-                  </div>
-                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.1em", color: "#8FA3B8", textTransform: "uppercase" }}>
-                    501(c)(4) Nonprofit
-                  </div>
-                </div>
-              </div>
-              <p style={{ color: "#8FA3B8", fontSize: "0.875rem", lineHeight: 1.7, maxWidth: "360px" }}>
-                A nonpartisan structural reform organization. We name the patterns that make corruption possible, propose safeguards that make it structurally difficult, and connect people ready to act.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* About */}
+            <div>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 800, fontSize: "1.125rem", marginBottom: "0.75rem" }}>
+                UNRIG USA
+              </h3>
+              <p className="text-sm opacity-75 leading-relaxed">
+                A nonpartisan initiative to restore constitutional accountability and end corruption. America is over this shit.
               </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {SOCIAL_LINKS.map((s) => (
-                  <SocialIcon key={s.icon} {...s} />
-                ))}
-              </div>
             </div>
 
-            {/* Navigation */}
+            {/* Quick Links */}
             <div>
-              <div className="section-label mb-4">Navigate</div>
-              <div className="flex flex-col gap-2">
-                {[
-                  { href: "/about", label: "About" },
-                  { href: "/the-problem", label: "The Problem" },
-                  { href: "/framework", label: "Why Systems" },
-                  { href: "/safeguards", label: "The Safeguards" },
-                  { href: "/recognize", label: "Recognize It" },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    style={{ color: "#8FA3B8", fontSize: "0.875rem", textDecoration: "none", transition: "color 0.2s" }}
-                    className="hover:text-white"
-                  >
-                    {link.label}
+              <h4 className="section-label mb-3">Quick Links</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="/about" className="opacity-75 hover:opacity-100 transition-opacity">
+                    Our Mission
                   </Link>
-                ))}
-              </div>
+                </li>
+                <li>
+                  <Link href="/safeguards" className="opacity-75 hover:opacity-100 transition-opacity">
+                    The Safeguards
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/action" className="opacity-75 hover:opacity-100 transition-opacity">
+                    Take Action
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" className="opacity-75 hover:opacity-100 transition-opacity">
+                    Privacy Policy
+                  </Link>
+                </li>
+              </ul>
             </div>
 
+            {/* Email Signup */}
             <div>
-              <div className="section-label mb-4">Act</div>
-              <div className="flex flex-col gap-2">
-                {[
-                  { href: "/action", label: "Take Action" },
-                  { href: "/research", label: "Research" },
-                  { href: "/news", label: "News & Updates" },
-                  { href: "/team", label: "Our Team" },
-                  { href: "/contact", label: "Contact" },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    style={{ color: "#8FA3B8", fontSize: "0.875rem", textDecoration: "none", transition: "color 0.2s" }}
-                    className="hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+              <h4 className="section-label mb-3">Join the Movement</h4>
+              <form onSubmit={handleEmailSignup} className="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
+                  className="flex-1 px-3 py-2 bg-secondary-foreground/10 border border-border rounded text-sm placeholder-opacity-50 focus:outline-none focus:border-accent"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-primary text-primary-foreground rounded font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-1"
+                >
+                  <Mail size={16} />
+                </button>
+              </form>
+              {emailSubmitted && <p className="text-xs text-accent mt-2">Thanks for signing up!</p>}
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div
-            className="mt-10 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-          >
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem", color: "#8FA3B8", letterSpacing: "0.05em" }}>
-              © 2026 Unrig USA. All rights reserved. Unrig USA is a 501(c)(4) nonprofit social welfare organization.
+          {/* Social Links */}
+          <div className="border-t border-border pt-6 mb-6">
+            <p className="section-label mb-3">Follow Us</p>
+            <div className="flex flex-wrap gap-3">
+              {SOCIAL_LINKS.map((social) => (
+                <SocialIcon key={social.label} icon={social.icon} href={social.href} label={social.label} />
+              ))}
             </div>
-            <div className="flex gap-4">
-              <Link href="/privacy" style={{ color: "#8FA3B8", fontSize: "0.75rem", textDecoration: "none" }} className="hover:text-white">
-                Privacy Policy
-              </Link>
-              <a href="https://unrigusa.org" style={{ color: "#8FA3B8", fontSize: "0.75rem", textDecoration: "none" }} className="hover:text-white">
-                unrigusa.org
-              </a>
-            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="border-t border-border pt-6 text-center text-xs opacity-60">
+            <p>© 2026 Unrig USA. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
-  );
-}
-
-function FooterEmailSignup() {
-  const [form, setForm] = useState({ firstName: "", email: "", zip: "", volunteer: false, nationalAction: false });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    try {
-      const res = await fetch("https://n8n.cloudpublica.org/webhook/unrig-signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  if (status === "success") {
-    return (
-      <div style={{ backgroundColor: "rgba(212,168,75,0.1)", border: "1px solid rgba(212,168,75,0.3)", padding: "1rem 1.25rem" }}>
-        <p style={{ color: "#D4A84B", fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "1rem" }}>
-          You're in. Watch your inbox for the 20 Safeguards and the Vocabulary Guide. You're not alone anymore.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div>
-          <label className="form-label">First Name *</label>
-          <input
-            type="text"
-            required
-            value={form.firstName}
-            onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-            placeholder="First name"
-            className="form-input"
-          />
-        </div>
-        <div>
-          <label className="form-label">Email *</label>
-          <input
-            type="email"
-            required
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            placeholder="your@email.com"
-            className="form-input"
-          />
-        </div>
-        <div>
-          <label className="form-label">Zip Code</label>
-          <input
-            type="text"
-            value={form.zip}
-            onChange={(e) => setForm({ ...form, zip: e.target.value })}
-            placeholder="Zip code"
-            className="form-input"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-3">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={form.volunteer}
-            onChange={(e) => setForm({ ...form, volunteer: e.target.checked })}
-            style={{ accentColor: "#C41E3A" }}
-          />
-          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem", color: "#8FA3B8", letterSpacing: "0.05em" }}>
-            I want to volunteer
-          </span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={form.nationalAction}
-            onChange={(e) => setForm({ ...form, nationalAction: e.target.checked })}
-            style={{ accentColor: "#C41E3A" }}
-          />
-          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.7rem", color: "#8FA3B8", letterSpacing: "0.05em" }}>
-            Notify me about national coordinated action
-          </span>
-        </label>
-      </div>
-      <div>
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="btn-primary"
-          style={{ opacity: status === "loading" ? 0.7 : 1 }}
-        >
-          {status === "loading" ? "Sending..." : "Join the Movement →"}
-        </button>
-        {status === "error" && (
-          <p style={{ color: "#C41E3A", fontSize: "0.8rem", marginTop: "0.5rem" }}>
-            Something went wrong. Please try again or email us directly.
-          </p>
-        )}
-      </div>
-    </form>
   );
 }
