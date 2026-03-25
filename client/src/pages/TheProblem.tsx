@@ -7,7 +7,6 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, ChevronDown, ChevronUp, ZoomIn } from "lucide-react";
 
-const DIAGRAM_SEVEN_PILLARS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663417942949/KiUG5xHiTpMVK9Gs3TakrN/diagram-seven-pillars_f960e6b3.png";
 const DIAGRAM_TIMELINE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663417942949/KiUG5xHiTpMVK9Gs3TakrN/diagram-timeline_1e6b1ecf.png";
 
 const STRUCTURAL_FAILURES = [
@@ -179,27 +178,6 @@ export default function TheProblem() {
             <p style={{ color: "#F5F0E8", fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "1.125rem" }}>
               You are not alone in this. Not metaphorically. <em>Actually.</em>
             </p>
-          </div>
-
-          {/* Seven Pillars Diagram */}
-          <div style={{ marginBottom: "3rem" }}>
-            <div className="section-label mb-3">The Seven Pillars of Control</div>
-            <p style={{ color: "#8FA3B8", fontSize: "0.875rem", marginBottom: "1rem", maxWidth: "600px" }}>
-              These are not isolated scandals. They are seven interconnected pillars of a coordinated consolidation of power. Each pillar reinforces the others. This is what a system looks like when it is being deliberately rigged.
-            </p>
-            <div style={{ backgroundColor: "#162236", border: "1px solid rgba(255,255,255,0.06)", padding: "1rem", display: "inline-block", width: "100%" }}>
-              <a href={DIAGRAM_SEVEN_PILLARS} target="_blank" rel="noopener noreferrer" style={{ display: "block", position: "relative" }}>
-                <img
-                  src={DIAGRAM_SEVEN_PILLARS}
-                  alt="Seven Pillars of Federal Consolidation diagram"
-                  style={{ width: "100%", maxWidth: "420px", display: "block", margin: "0 auto" }}
-                />
-                <div style={{ position: "absolute", top: "0.5rem", right: "0.5rem", backgroundColor: "rgba(13,27,42,0.8)", padding: "0.25rem 0.5rem", display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                  <ZoomIn size={12} style={{ color: "#D4A84B" }} />
-                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "0.6rem", color: "#D4A84B", letterSpacing: "0.08em" }}>CLICK TO ENLARGE</span>
-                </div>
-              </a>
-            </div>
           </div>
 
           {/* Structural Failures Accordion */}
