@@ -28,7 +28,7 @@ export default function About() {
       <div className="red-rule" />
 
       {/* Who We Are */}
-      <section style={{ backgroundColor: "#0D1B2A", padding: "4rem 0" }}>
+      <section style={{ backgroundColor: "#F5F0E8", padding: "4rem 0" }}>
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -43,7 +43,7 @@ export default function About() {
                 We were founded by Americans who recognized that the same abuses keep repeating — not because the wrong people are in charge, but because the structure of governance incentivizes abuse and lacks the mechanisms to stop it.
               </p>
             </div>
-            <div style={{ backgroundColor: "#162236", border: "1px solid rgba(255,255,255,0.06)", padding: "2rem" }}>
+            <div style={{ backgroundColor: "#FFFFFF", border: "1px solid #D4C8B8", padding: "2rem" }}>
               <div className="section-label mb-4">What We're Not</div>
               {[
                 { label: "Not partisan.", desc: "Authoritarian control is not a left-right phenomenon. It is a structural pattern." },
