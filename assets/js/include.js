@@ -10,20 +10,31 @@
       .then(function (r) { return r.text(); })
       .then(function (html) {
         var doc = new DOMParser().parseFromString(html, 'text/html');
+        var parent = el.parentNode;
+
+        // Capture script nodes BEFORE we move other nodes (so we can re-create
+        // them as live <script> elements at the end). DOMParser-created script
+        // tags are inert; they only run if recreated via document.createElement.
+        var pendingScripts = Array.from(doc.querySelectorAll('script')).map(function (s) {
+          return { src: s.src, text: s.textContent };
+        });
+        // Strip those scripts from the parsed doc so they don't get inserted as inert.
+        Array.from(doc.querySelectorAll('script')).forEach(function (s) { s.remove(); });
+
+        // Move <style> and <link> from head, and remaining body children, into a fragment.
         var frag = document.createDocumentFragment();
-        // Move parsed body children (and head <style>) into the fragment.
         Array.from(doc.head.querySelectorAll('style, link')).forEach(function (n) { frag.appendChild(n); });
         Array.from(doc.body.childNodes).forEach(function (n) { frag.appendChild(n); });
+
         // Replace placeholder in-place.
-        var parent = el.parentNode;
         parent.insertBefore(frag, el);
         parent.removeChild(el);
-        // Re-execute scripts (DOMParser-created <script> nodes don't auto-run).
-        document.querySelectorAll('script[data-pending-include]').forEach(function (s) { s.remove(); });
-        Array.from(doc.querySelectorAll('script')).forEach(function (oldScript) {
+
+        // Now re-create each script as a live element so the browser executes it.
+        pendingScripts.forEach(function (info) {
           var s = document.createElement('script');
-          if (oldScript.src) s.src = oldScript.src;
-          else s.textContent = oldScript.textContent;
+          if (info.src) s.src = info.src;
+          else s.textContent = info.text;
           document.body.appendChild(s);
         });
       })
