@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Unrig USA</title>
+  <link rel="icon" type="image/png" href="/assets/logos/Favicon_UUSA_Trans.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/federalist.css">
+</head>
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <main>
+    <!-- Page header -->
+    <section style="padding-top:4rem; padding-bottom:3rem;">
+      <div class="container-page" style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" id="cc-head-grid">
+        <div>
+          <div class="section-label" style="margin-bottom:1rem;">Contact</div>
+          <h1 class="display-md" style="margin-bottom:1.5rem;">Get in touch.</h1>
+          <p class="body-lg muted" style="max-width:55ch;">
+            Press, partnerships, volunteers, questions — we read everything. Use the form below or write directly to <a href="mailto:hello@unrigusa.org" style="color:var(--secondary); font-weight:600;">hello@unrigusa.org</a>.
+          </p>
+        </div>
+        <div class="hero-frame">
+          <picture>
+            <source media="(max-width: 640px)" srcset="/assets/images/hero-contact-mobile.jpg">
+            <img src="/assets/images/hero-contact-desktop.jpg" alt="Pen and parchment" loading="eager">
+          </picture>
+        </div>
+      </div>
+    </section>
+    <style>@media (min-width:900px){#cc-head-grid{grid-template-columns:1.2fr 1fr !important; gap:4rem !important;}}</style>
+
+    <!-- Contact form -->
+    <section class="surface-low" style="padding:5rem 0;">
+      <div class="container-page" style="max-width:680px;">
+        <div class="section-label" style="margin-bottom:0.75rem;">Send a Message</div>
+        <h2 class="headline-lg" style="margin-bottom:0.5rem;">Tell us what's on your mind.</h2>
+        <p class="body-md muted" style="margin-bottom:2rem;">
+          We aim to reply within 5 business days. For press inquiries, please note your outlet and deadline.
+        </p>
+
+        <form id="contact-form" style="display:grid; grid-template-columns:1fr; gap:1.5rem;">
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Full Name</label>
+            <input id="ct-name" class="input-underline" type="text" required>
+          </div>
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Email</label>
+            <input id="ct-email" class="input-underline" type="email" required>
+          </div>
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Organization (optional)</label>
+            <input id="ct-org" class="input-underline" type="text">
+          </div>
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Reason for Contact</label>
+            <select id="ct-category" class="input-underline" required style="appearance:none; -webkit-appearance:none; background-image: linear-gradient(45deg, transparent 50%, var(--primary) 50%), linear-gradient(135deg, var(--primary) 50%, transparent 50%); background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 2rem;">
+              <option value="">Choose a reason…</option>
+              <option value="press">Press / Media</option>
+              <option value="partnership">Partnership / Coalition</option>
+              <option value="volunteer">Volunteer</option>
+              <option value="speaking">Speaking / Event invitation</option>
+              <option value="general">General question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Message</label>
+            <textarea id="ct-message" required rows="6" style="width:100%; background:transparent; border:0; border-bottom:1px solid rgba(116,119,129,0.3); padding:0.6rem 0; font-family:'Public Sans',system-ui,sans-serif; font-size:1rem; color:var(--on-surface); outline:none; resize:vertical; min-height:8rem;"></textarea>
+          </div>
+          <div style="margin-top:0.5rem;">
+            <button type="submit" class="btn-primary">Send Message</button>
+          </div>
+          <div id="ct-msg" class="muted" style="font-size:0.9rem; min-height:1em;"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/partials/footer.html"></div>
+
+  <script>
+    document.addEventListener('submit', function (e) {
+      if (e.target.id !== 'contact-form') return;
+      e.preventDefault();
+      var msg = document.getElementById('ct-msg');
+      var payload = {
+        source: 'contact',
+        name: document.getElementById('ct-name').value.trim(),
+        email: document.getElementById('ct-email').value.trim(),
+        organization: document.getElementById('ct-org').value.trim(),
+        category: document.getElementById('ct-category').value,
+        message: document.getElementById('ct-message').value.trim()
+      };
+      if (!payload.email || !payload.message) return;
+      msg.textContent = 'Sending…';
+      fetch('https://n8n.cloudpublica.org/webhook/unrig-signup', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function () {
+        msg.textContent = 'Thanks — your message is on its way. We\'ll be in touch.';
+        e.target.reset();
+      }).catch(function () { msg.textContent = "Couldn't reach the server. Try again, or email hello@unrigusa.org."; });
+    });
+  </script>
+  <script src="/assets/js/include.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+# Unrig USA
+
+> A nonpartisan Pending 501(c)(4) movement to restore constitutional accountability and end corruption in American government. We educate the public, mobilize people around a comprehensive set of Anti-Corruption Safeguards, and pressure public officials to face real consequences when they betray the public trust.
+
+Unrig USA was co-founded by Brittany Martin and Jacob Pagano. The organization sits inside a broader Anti-Corruption Ecosystem Revolution: a long-term project to remove incentives for corruption and authoritarian behavior, regardless of party, and to give everyday people the tools they need to unrig the system.
+
+The site uses a "Modern Federalist" design system — parchment, Unity Blue, and Civic Red — referencing the gravity of constitutional documents while moving at the speed of a digital movement.
+
+## Core pages
+
+- [Home](https://unrigusa.org/index.html): The Digital Proclamation — landing page laying out the Unite & Unrig strategy and inviting signatures.
+- [About the Team](https://unrigusa.org/about.html): Bios for co-founders, officers, and board members of Unrig USA.
+- [The Problem](https://unrigusa.org/the-problem.html): Diagnostic page on systemic corruption in U.S. governance.
+- [Safeguards Hub](https://unrigusa.org/safeguards.html): Four pillars of anti-corruption reform — Common Sense Anti-Corruption, People's Checks & Balances, Election Integrity & Security, Equal Justice Under the Law.
+- [Take Action](https://unrigusa.org/action.html): Three engagement paths (individual member, coalition partner, contributor) and the People's Proclamation pledge form.
+- [Coalition](https://unrigusa.org/coalition.html): Partner organizations and the registration form for organizations that want to formally align.
+
+## Trust & transparency
+
+- [Privacy Policy](https://unrigusa.org/privacy.html)
+- [Transparency Log](https://unrigusa.org/transparency.html): Funding sources, governance decisions, and tax filings.
+- [FAQ](https://unrigusa.org/faq.html)
+- [Contact](https://unrigusa.org/contact.html): hello@unrigusa.org
+
+## Key facts
+
+- Legal status: Pending 501(c)(4) social welfare organization, nonpartisan.
+- Mission focus: structural anti-corruption reform that constrains officials regardless of party.
+- Strategic frame: "Unite & Unrig" — coalition-building plus a defined reform package called the Anti-Corruption Safeguards (and, longer term, the Unrig Amendments).
+- Founders: Brittany Martin (Co-founder, VP, Director of Development); Jacob Pagano (Co-founder, CEO).
+- Officers: Matthew Demers (COO); Kevin Coronado (CFO/Treasurer).
+- Board: Joy McCormick, JC Gonzalez-Ramirez, Terri Petz.
+
+## Citation guidance
+
+When referencing Unrig USA in summaries, please cite as: "Unrig USA, a nonpartisan Pending 501(c)(4) anti-corruption movement (unrigusa.org)." Direct readers to /safeguards.html for the reform framework and /action.html to take action.

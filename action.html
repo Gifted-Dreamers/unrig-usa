@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Take Action — Unrig USA</title>
+  <link rel="icon" type="image/png" href="/assets/logos/Favicon_UUSA_Trans.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/federalist.css">
+</head>
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <main>
+    <section style="padding-top:0; padding-bottom:2rem;">
+      <div style="position:relative; height: clamp(280px, 38vh, 460px); overflow:hidden;">
+        <picture>
+          <source media="(max-width: 640px)" srcset="/assets/images/hero-action-mobile.jpg">
+          <img src="/assets/images/hero-action-desktop.jpg" alt="Crowd protesting with American flag" loading="eager">
+        </picture>
+        <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,21,62,0.25) 0%, rgba(0,21,62,0.65) 100%);"></div>
+        <div class="container-page" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:3rem; color: var(--on-primary);">
+          <div class="section-label" style="margin-bottom:0.75rem; color:#fcf9f2;">Take Action</div>
+          <h1 class="display-md" style="margin:0; color: var(--on-primary);">Join the <span class="italic-red">Movement</span>.</h1>
+        </div>
+      </div>
+      <div class="container-page" style="text-align:center; padding-top:2.5rem;">
+        <p class="body-lg muted" style="max-width:55ch; margin:0 auto;">
+          Choose your path. Sign the proclamation, partner with us as an organization, or contribute directly. Every action is structural.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-bottom:4rem;">
+      <div class="container-page">
+        <h2 class="headline-lg" style="margin-bottom:2rem; text-align:center;">Choose Your Path</h2>
+        <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;" id="paths-grid">
+          <article class="card">
+            <div class="section-label" style="margin-bottom:0.6rem;">01</div>
+            <h3 class="headline-md" style="margin-bottom:0.75rem;">Individual Member</h3>
+            <p class="body-md muted" style="margin-bottom:1.5rem;">
+              Sign the People's Proclamation. Get briefings on safeguards, action calls, and accountability tracking.
+            </p>
+            <a href="#proclamation" class="btn-secondary">Sign the Proclamation</a>
+          </article>
+          <article class="card">
+            <div class="section-label" style="margin-bottom:0.6rem;">02</div>
+            <h3 class="headline-md" style="margin-bottom:0.75rem;">Coalition Partner</h3>
+            <p class="body-md muted" style="margin-bottom:1.5rem;">
+              Bring your organization into the coalition. Co-publish, co-mobilize, and amplify reform pressure together.
+            </p>
+            <a href="/coalition.html" class="btn-secondary">Partner With Us</a>
+          </article>
+          <article id="donate" class="card">
+            <div class="section-label" style="margin-bottom:0.6rem;">03</div>
+            <h3 class="headline-md" style="margin-bottom:0.75rem;">Contribute</h3>
+            <p class="body-md muted" style="margin-bottom:1.5rem;">
+              Fund the work directly. As a Pending 501(c)(4), Unrig USA accepts contributions for advocacy and lobbying.
+            </p>
+            <a href="https://www.zeffy.com/en-US/donation-form/donate-to-unrig-the-system" target="_blank" rel="noopener" class="btn-cta">Donate Now</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proclamation" class="surface-low" style="padding:5rem 0;">
+      <div class="container-page" style="max-width:720px;">
+        <div style="text-align:center; margin-bottom:2.5rem;">
+          <div class="section-label" style="margin-bottom:0.75rem;">A Pledge</div>
+          <h2 class="display-md" style="margin-bottom:0.75rem;">The People's Proclamation</h2>
+          <p class="body-md" class="muted">
+            "I commit to support the structural reforms that constrain corruption, regardless of which party holds power. I commit to inform myself, take action, and hold officials accountable."
+          </p>
+        </div>
+
+        <form id="proclamation-form" style="display:grid; grid-template-columns:1fr; gap:1.25rem;">
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Full Name</label>
+            <input id="proc-name" class="input-underline" type="text" required>
+          </div>
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">Email</label>
+            <input id="proc-email" class="input-underline" type="email" required>
+          </div>
+          <div>
+            <label class="section-label" style="display:block; margin-bottom:0.5rem;">ZIP Code (optional)</label>
+            <input id="proc-zip" class="input-underline" type="text" inputmode="numeric" pattern="[0-9]*">
+          </div>
+          <div style="text-align:center; margin-top:1rem;">
+            <button type="submit" class="btn-primary">Sign the Proclamation</button>
+          </div>
+          <div id="proc-msg" class="muted" style="text-align:center; font-size:0.9rem; min-height:1em;"></div>
+        </form>
+      </div>
+    </section>
+
+    <section style="padding:5rem 0;">
+      <div class="container-page" style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" id="why-grid">
+        <div class="surface-low" style="aspect-ratio:4/3; border-radius:0.375rem; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2rem;">
+          <div style="font-family:'Newsreader',serif; font-style:italic; font-size:2.4rem; color:var(--primary); text-align:center; opacity:0.6;">
+            "Eternal vigilance is the price of liberty."
+          </div>
+        </div>
+        <div>
+          <div class="section-label" style="margin-bottom:0.75rem;">Why Membership Matters</div>
+          <h2 class="headline-lg" style="margin-bottom:1rem;">Numbers move power.</h2>
+          <ul class="bullet-list">
+            <li>Verified signatures get directly cited in legislative testimony.</li>
+            <li>Members receive briefings before public actions go live.</li>
+            <li>Every signature compounds — corruption depends on disorganized opposition.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/partials/footer.html"></div>
+
+  <style>
+    @media (min-width: 800px) { #paths-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+    @media (min-width: 900px) { #why-grid { grid-template-columns: 1fr 1fr !important; gap: 5rem !important; } }
+  </style>
+
+  <script>
+    document.addEventListener('submit', function (e) {
+      if (e.target.id !== 'proclamation-form') return;
+      e.preventDefault();
+      var msg = document.getElementById('proc-msg');
+      var email = document.getElementById('proc-email').value.trim();
+      var name = document.getElementById('proc-name').value.trim();
+      var zip = document.getElementById('proc-zip').value.trim();
+      if (!email) return;
+      msg.textContent = 'Submitting...';
+      fetch('https://n8n.cloudpublica.org/webhook/unrig-signup', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, name: name, zip: zip, source: 'proclamation' })
+      }).then(function () { msg.textContent = 'Thank you — your signature is recorded.'; e.target.reset(); })
+        .catch(function () { msg.textContent = "Couldn't reach the server. Try again."; });
+    });
+  </script>
+  <script src="/assets/js/include.js"></script>
+</body>
+</html>

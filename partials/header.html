@@ -1,0 +1,76 @@
+<header class="glass-header">
+  <div class="container-page" style="display:flex; align-items:center; justify-content:space-between; padding-top:1rem; padding-bottom:1rem;">
+    <a href="/index.html" style="display:flex; align-items:center; gap:0.85rem;">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/assets/logos/Logo_MobileNav_UUSA.png">
+        <img src="/assets/logos/Logo_DesktopHeader_UUSA.png" alt="Unrig USA" style="height:44px; width:auto; display:block; border-radius:0.25rem;">
+      </picture>
+      <div class="section-label" style="display:none; font-size:0.6rem; letter-spacing:0.32em; color:var(--secondary);" id="logo-tag">The Digital Proclamation</div>
+    </a>
+
+    <nav class="desktop-nav" style="display:none; align-items:center; gap:2rem;">
+      <a href="/the-problem.html" class="nav-link" data-link="/the-problem.html">The Problem</a>
+      <a href="/safeguards.html" class="nav-link" data-link="/safeguards.html">Safeguards</a>
+      <a href="/action.html" class="nav-link" data-link="/action.html">Take Action</a>
+      <a href="/coalition.html" class="nav-link" data-link="/coalition.html">Coalition</a>
+      <a href="/about.html" class="nav-link" data-link="/about.html">About</a>
+    </nav>
+
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <a href="https://www.zeffy.com/en-US/donation-form/donate-to-unrig-the-system" target="_blank" rel="noopener" class="btn-donate">Donate</a>
+      <button id="mobile-menu-btn" aria-label="Open menu" style="background:transparent; border:0; padding:0.5rem; cursor:pointer; color:var(--primary);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Divider line under nav -->
+  <div class="header-divider"></div>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="container-page" style="padding-top:0.5rem; padding-bottom:1.5rem;">
+      <a href="/the-problem.html" class="nav-link">The Problem</a>
+      <a href="/safeguards.html" class="nav-link">Safeguards</a>
+      <a href="/action.html" class="nav-link">Take Action</a>
+      <a href="/coalition.html" class="nav-link">Coalition</a>
+      <a href="/about.html" class="nav-link">About</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  @media (min-width: 900px) {
+    .desktop-nav { display: flex !important; }
+    #mobile-menu-btn { display: none !important; }
+    #logo-tag { display: block !important; }
+  }
+  /* Federalist divider — double rule with Civic Red accent */
+  .header-divider {
+    height: 4px;
+    background: linear-gradient(180deg,
+      transparent 0,
+      transparent 1px,
+      var(--secondary) 1px,
+      var(--secondary) 2px,
+      transparent 2px,
+      transparent 3px,
+      rgba(0, 21, 62, 0.18) 3px,
+      rgba(0, 21, 62, 0.18) 4px
+    );
+  }
+</style>
+
+<script>
+  (function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () { menu.classList.toggle('is-open'); });
+    }
+    var here = window.location.pathname.replace(/\/$/, '') || '/index.html';
+    if (here === '/' || here === '') here = '/index.html';
+    document.querySelectorAll('[data-link]').forEach(function (el) {
+      if (el.getAttribute('data-link') === here) el.classList.add('is-active');
+    });
+  })();
+</script>

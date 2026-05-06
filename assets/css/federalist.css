@@ -1,0 +1,353 @@
+/* Federalist Design System — Unrig USA
+ * Palette, type, utilities. No 1px borders for sectioning.
+ */
+
+:root {
+  --primary: #00153e;            /* Unity Blue */
+  --primary-container: #002868;
+  --secondary: #ba022d;          /* Civic Red */
+  --on-primary: #fcf9f2;
+  --on-secondary: #fcf9f2;
+
+  --surface: #fcf9f2;            /* Parchment */
+  --surface-container-low: #f6f3ec;
+  --surface-container: #efece4;
+  --surface-container-high: #e9e6de;
+  --surface-container-highest: #e5e2db;
+  --surface-variant: #e5e2db;
+
+  --on-surface: #1c1c18;         /* Ink */
+  --on-surface-muted: #4a4a44;
+  --outline: #747781;
+  --outline-variant: rgba(116, 119, 129, 0.15);
+}
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Parchment noise grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+main, header, footer { position: relative; z-index: 2; }
+
+.font-headline { font-family: 'Newsreader', Georgia, serif; }
+.font-body { font-family: 'Public Sans', system-ui, sans-serif; }
+
+h1, h2, h3, h4 {
+  font-family: 'Newsreader', Georgia, serif;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--secondary); }
+
+.section-label {
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--secondary);
+}
+
+.surface-low { background-color: var(--surface-container-low); }
+.surface-mid { background-color: var(--surface-container); }
+.surface-high { background-color: var(--surface-container-highest); }
+.ink-card { background: var(--primary); color: var(--on-primary); }
+.ink-card h1, .ink-card h2, .ink-card h3, .ink-card h4 { color: var(--on-primary); }
+.ink-card .section-label { color: #ba022d; opacity: 0.95; }
+
+/* Buttons — Federalist seal */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-container) 100%);
+  color: var(--on-primary);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0.375rem;
+  border-bottom: 2px solid var(--secondary);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.btn-primary:hover { color: var(--on-primary); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(28, 28, 24, 0.12); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background: var(--surface-container-highest);
+  color: var(--primary);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0.375rem;
+  transition: background 120ms ease;
+}
+.btn-secondary:hover { background: var(--surface-container-high); color: var(--primary); }
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background: var(--secondary);
+  color: var(--on-secondary);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0.375rem;
+  transition: filter 120ms ease;
+}
+.btn-cta:hover { filter: brightness(0.92); color: var(--on-secondary); }
+
+/* Cards — no borders, surface tier lift on hover */
+.card {
+  background: var(--surface-container-low);
+  padding: 1.75rem;
+  border-radius: 0.375rem;
+  transition: background 160ms ease;
+}
+.card:hover { background: var(--surface-container-high); }
+
+.card-elevated {
+  background: var(--surface-container-highest);
+  padding: 1.75rem;
+  border-radius: 0.375rem;
+}
+
+/* Underline-only inputs */
+.input-underline {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(116, 119, 129, 0.3);
+  padding: 0.6rem 0;
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 120ms ease, border-width 120ms ease;
+}
+.input-underline:focus { border-bottom: 2px solid var(--secondary); }
+.input-underline::placeholder { color: var(--outline); opacity: 0.6; }
+
+/* Action chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-variant);
+  color: var(--on-surface);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: 9999px;
+}
+
+/* Sticky glass header */
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(252, 249, 242, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Containers */
+.container-page { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+@media (min-width: 768px) { .container-page { padding: 0 2.5rem; } }
+
+/* Hero numeric tag */
+.numeric-tag {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  color: var(--secondary);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+/* Donate ribbon button (header CTA) */
+.btn-donate {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.1rem;
+  background: var(--secondary);
+  color: var(--on-secondary);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+}
+.btn-donate:hover { color: var(--on-secondary); filter: brightness(0.92); }
+
+/* Nav links */
+.nav-link {
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  letter-spacing: 0.02em;
+  transition: color 120ms ease;
+}
+.nav-link:hover, .nav-link.is-active { color: var(--secondary); }
+
+/* Footer link */
+.footer-link {
+  display: block;
+  padding: 0.25rem 0;
+  font-size: 0.88rem;
+  color: var(--on-surface);
+  opacity: 0.78;
+}
+.footer-link:hover { opacity: 1; color: var(--secondary); }
+
+/* Social icon button */
+.social-btn {
+  width: 38px; height: 38px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-container-highest);
+  color: var(--primary);
+  border-radius: 0.375rem;
+  transition: background 120ms ease, color 120ms ease;
+}
+.social-btn:hover { background: var(--primary); color: var(--on-primary); }
+
+/* Team — bio cards */
+.team-card {
+  background: var(--surface-container-low);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  transition: background 160ms ease;
+}
+.team-card:hover { background: var(--surface-container-high); }
+.team-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+}
+.team-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--surface-container-high) 0%, var(--surface-container-highest) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 3.5rem;
+  font-style: italic;
+  color: var(--primary);
+  opacity: 0.45;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  background: var(--surface-container-low);
+}
+.mobile-menu.is-open { display: block; }
+.mobile-menu .nav-link { display: block; padding: 0.85rem 0; }
+
+/* Helper spacing */
+.section { padding: 5rem 0; }
+@media (min-width: 768px) { .section { padding: 7rem 0; } }
+.section-tight { padding: 3rem 0; }
+
+/* Ambient shadow for floating elements */
+.shadow-ambient { box-shadow: 0 20px 40px rgba(28, 28, 24, 0.06); }
+
+/* Typography scale */
+.display-lg { font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 800; }
+.display-md { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; }
+.headline-lg { font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 700; }
+.headline-md { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; }
+.body-lg { font-size: 1.05rem; line-height: 1.7; }
+.body-md { font-size: 0.98rem; line-height: 1.65; }
+
+/* Italic accent for revolution-style headlines */
+.italic-red { font-style: italic; color: var(--secondary); }
+
+/* ---------- Standardized component classes ---------- */
+
+/* Card numeral — bold upright tag for numbered/lettered cards (1. UNITE, A., B., 01)
+ * Use INSTEAD of .numeric-tag inside cards. .numeric-tag stays for small italic accents. */
+.card-numeral {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+  color: var(--secondary);
+  margin-bottom: 0.6rem;
+}
+.ink-card .card-numeral { color: var(--on-primary); opacity: 0.85; }
+
+/* Muted body text — replaces inline color:var(--on-surface-muted) */
+.muted { color: var(--on-surface-muted); }
+.ink-card .muted { color: var(--on-primary); opacity: 0.85; }
+
+/* Italic placeholder copy — for "bio coming soon" etc. */
+.muted-italic { color: var(--on-surface-muted); font-style: italic; }
+
+/* Hero image frame — 4:3 aspect-ratio rounded container */
+.hero-frame {
+  aspect-ratio: 4 / 3;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background: var(--surface-container-low);
+}
+.hero-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Page-header split grid: stacks on mobile, 2-col on desktop with 1.3fr / 1fr */
+.split-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 900px) {
+  .split-grid { grid-template-columns: 1.3fr 1fr; gap: 4rem; }
+  .split-grid--wide-text { grid-template-columns: 1.4fr 1fr; }
+  .split-grid--even { grid-template-columns: 1fr 1fr; gap: 5rem; }
+}
+
+/* Hero variant for pages that want a 4:5 portrait image (home) */
+.hero-frame--portrait { aspect-ratio: 4 / 5; }
+
+/* Footer link defaults — strips repeated inline color overrides */
+footer .footer-link { color: var(--on-primary); }
+
+/* Bullet list with red ▸ marker — used on home/action "why" sections */
+.bullet-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+.bullet-list li { color: var(--on-surface-muted); padding-left: 1.25rem; position: relative; }
+.bullet-list li::before { content: "▸"; position: absolute; left: 0; color: var(--secondary); }
+
+/* Page-header section padding (replaces padding-top:4rem; padding-bottom:3rem on every page) */
+.page-header { padding: 4rem 0 3rem; }
+.page-header--tight { padding: 4rem 0 2rem; }

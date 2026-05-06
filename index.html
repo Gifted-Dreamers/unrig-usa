@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unrig USA — The Digital Proclamation</title>
+  <meta name="description" content="A nonpartisan Pending 501(c)(4) movement to restore constitutional accountability and end corruption in American government.">
+  <link rel="icon" type="image/png" href="/assets/logos/Favicon_UUSA_Trans.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/federalist.css">
+</head>
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="section">
+      <div class="container-page" style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" id="hero-grid">
+        <div>
+          <div class="section-label" style="margin-bottom:1.25rem;">A Digital Proclamation · 2026</div>
+          <h1 class="display-lg" style="margin-bottom:1.5rem;">
+            The system is <span style="text-transform:uppercase;">RIGGED</span>.
+            <span class="italic-red">Revolution Required.</span>
+          </h1>
+          <p class="body-lg muted" style="max-width:60ch; margin-bottom:2rem;">
+            We the People are welcoming our sovereignty. The Declaration of Independence demands an end to destructive systems and the duty to provide new Guards for our future security.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+            <a href="/safeguards.html" class="btn-primary">Read the Safeguards</a>
+            <a href="/action.html" class="btn-secondary">Join the Movement</a>
+          </div>
+          <div class="numeric-tag" style="margin-top:2.5rem;">¶ No. 02</div>
+        </div>
+        <div style="position:relative;">
+          <div class="hero-frame hero-frame--portrait">
+            <picture>
+              <source media="(max-width: 640px)" srcset="/assets/images/hero-home-mobile.jpg">
+              <img src="/assets/images/hero-home-desktop.jpg" alt="The U.S. Capitol at sunset" loading="eager">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNITE & UNRIG -->
+    <section class="section-tight" style="background: var(--surface-container-low);">
+      <div class="container-page" style="padding-top:4rem; padding-bottom:4rem;">
+        <div class="section-label" style="margin-bottom:0.5rem;">Execution Strategy</div>
+        <h2 class="display-md" style="margin-bottom:3rem;">Unite &amp; Unrig.</h2>
+
+        <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;" id="unite-grid">
+          <div class="card-elevated">
+            <div class="card-numeral">1. UNITE</div>
+            <h3 class="headline-md" style="margin-bottom:1rem;">Building a coalition that crosses every line.</h3>
+            <p class="body-md" class="muted">
+              We're a Pending 501(c)(4) nonpartisan movement. Independents, Republicans, Democrats, and the unaffiliated all have a stake. Corruption isn't left or right — it's up against everyone else.
+            </p>
+          </div>
+          <div class="card-elevated">
+            <div class="card-numeral">2. UNRIG</div>
+            <h3 class="headline-md" style="margin-bottom:1rem;">A comprehensive set of Anti-Corruption Safeguards.</h3>
+            <p class="body-md" class="muted">
+              We've built a structured framework of reforms that remove incentives for corruption regardless of which party is in power. Read the safeguards, then help us pressure officials to enact them.
+            </p>
+          </div>
+          <div class="ink-card" style="padding:1.75rem; border-radius:0.375rem;">
+            <div class="card-numeral">3. UNRIG</div>
+            <h3 class="headline-md" style="margin-bottom:1rem;">A constitutional framework, built to last.</h3>
+            <p class="body-md" style="opacity:0.85;">
+              The Unrig Amendments are designed to outlast any one administration. Structural reform, not partisan revenge.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN PROCLAMATION -->
+    <section class="section">
+      <div class="container-page" style="text-align:center;">
+        <h2 class="display-md" style="margin-bottom:1rem;">Join the Digital Proclamation.</h2>
+        <p class="body-lg muted" style="max-width:55ch; margin:0 auto 2.5rem;">
+          One signature. One commitment. One step toward a government that answers to its people.
+        </p>
+        <form id="hero-signup" style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; max-width:520px; margin:0 auto;">
+          <input type="email" required placeholder="Your email address" id="hero-email" class="input-underline" style="flex:1; min-width:240px;">
+          <button class="btn-primary" type="submit">Sign On</button>
+        </form>
+        <div id="hero-signup-msg" class="muted" style="font-size:0.85rem; margin-top:1rem; min-height:1em;"></div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/partials/footer.html"></div>
+
+  <style>
+    @media (min-width: 900px) {
+      #hero-grid { grid-template-columns: 1.3fr 1fr !important; gap: 5rem !important; }
+      #unite-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('submit', function (e) {
+      if (e.target.id !== 'hero-signup') return;
+      e.preventDefault();
+      var msg = document.getElementById('hero-signup-msg');
+      var email = document.getElementById('hero-email').value.trim();
+      if (!email) return;
+      msg.textContent = 'Joining...';
+      fetch('https://n8n.cloudpublica.org/webhook/unrig-signup', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      }).then(function () { msg.textContent = 'Thanks for joining.'; document.getElementById('hero-email').value=''; })
+        .catch(function () { msg.textContent = "Couldn't reach the server."; });
+    });
+  </script>
+  <script src="/assets/js/include.js"></script>
+</body>
+</html>

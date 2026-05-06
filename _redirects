@@ -1,0 +1,26 @@
+# Cloudflare Pages redirects — preserve links from the old site structure.
+# Format: <source>  <destination>  <status>
+
+# Old static .html paths that no longer exist
+/framework.html   /safeguards.html        301
+/team.html        /about.html#team        301
+/news.html        /                       301
+/recognize.html   /the-problem.html       301
+/research.html    /safeguards.html        301
+
+# React-style routes (no .html) → matching new pages
+/about            /about.html             301
+/the-problem      /the-problem.html       301
+/framework        /safeguards.html        301
+/safeguards       /safeguards.html        301
+/recognize        /the-problem.html       301
+/action           /action.html            301
+/research         /safeguards.html        301
+/news             /                       301
+/team             /about.html#team        301
+/contact          /contact.html           301
+/privacy          /privacy.html           301
+/coalition        /coalition.html         301
+/dashboard        /dashboard.html         301
+/faq              /faq.html               301
+/transparency     /transparency.html      301
