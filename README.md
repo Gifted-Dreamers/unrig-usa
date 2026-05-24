@@ -1,11 +1,11 @@
-# Unrig USA — new static site
+# Unrig USA — static site
 
 Pure static HTML/CSS. No build step. Deploys directly to Cloudflare Pages.
 
 ## Run locally
 
 ```sh
-cd "unrig-new"
+cd UnrigUSA
 python3 -m http.server 8080
 # open http://localhost:8080
 ```
@@ -15,18 +15,20 @@ The shared header/footer are injected via `assets/js/include.js` (fetches `parti
 ## Tree
 
 ```
-unrig-new/
+UnrigUSA/
   index.html              Home — "RIGGED. Revolution Required."
-  about.html              Team bios (6 members; 4 photos, 2 bio placeholders)
-  the-problem.html        Stub
+  about.html              Team bios (Brittany, JC, Joy, Kevin, Matt, Terri)
+  the-problem.html        The Problem
   safeguards.html         Anti-Corruption Safeguards Hub (4 pillars)
   action.html             Take Action — paths + People's Proclamation pledge
   coalition.html          Coalition partners + organization registration
   dashboard.html          Member Dashboard preview (no auth)
   contact.html            Email contact
-  privacy.html            Stub
-  transparency.html       Stub
-  faq.html                Stub
+  privacy.html            Privacy
+  transparency.html       Transparency
+  faq.html                FAQ
+  CREDITS.md              Credits
+  _redirects              Cloudflare Pages redirects
   robots.txt              Allows all crawlers; points to sitemap
   sitemap.xml             10-URL sitemap for Google
   llms.txt                AI/LLM discovery convention (Anthropic, Perplexity, etc.)
@@ -36,7 +38,10 @@ unrig-new/
   assets/
     css/federalist.css    Design tokens, type, components
     js/include.js         Tiny client-side partial-include helper
-    team/                 Photos: Brittany, Jacob, JC, Joy
+    images/               Hero and section imagery
+    logos/                Brand marks and favicon
+    team/                 Team photos (Brittany, JC, Joy, Kevin, Matt, Terri)
+  docs/                   Working source material (bios, ideas, reference assets) — not deployed
 ```
 
 ## Discovery files
@@ -59,7 +64,7 @@ unrig-new/
 
 ## Forms
 
-All three signup forms (`hero-signup`, `proclamation-form`, `coalition-form`, footer) POST to `https://n8n.cloudpublica.org/webhook/unrig-signup` with a `source` field for routing.
+All signup forms (`hero-signup`, `proclamation-form`, `coalition-form`, footer) POST to `https://n8n.cloudpublica.org/webhook/unrig-signup` with a `source` field for routing.
 
 ## Deploy to Cloudflare Pages
 
