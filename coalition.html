@@ -30,7 +30,9 @@
         </div>
         <div class="hero-frame">
           <picture>
+            <source media="(max-width: 640px)" type="image/webp" srcset="/assets/images/hero-coalition-mobile.webp">
             <source media="(max-width: 640px)" srcset="/assets/images/hero-coalition-mobile.jpg">
+            <source type="image/webp" srcset="/assets/images/hero-coalition-desktop.webp">
             <img src="/assets/images/hero-coalition-desktop.jpg" alt="A coalition meeting in deliberation" loading="eager">
           </picture>
         </div>
@@ -40,7 +42,10 @@
 
     <section style="position:relative; padding:6rem 0; overflow:hidden;">
       <!-- Background image -->
-      <img src="/assets/images/declaration-bg.jpg" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+      <picture>
+        <source type="image/webp" srcset="/assets/images/declaration-bg.webp">
+        <img src="/assets/images/declaration-bg.jpg" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+      </picture>
       <!-- Navy overlay for legibility (Federalist primary at 78%) -->
       <div aria-hidden="true" style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,21,62,0.72) 0%, rgba(0,21,62,0.85) 100%); z-index:1;"></div>
 
