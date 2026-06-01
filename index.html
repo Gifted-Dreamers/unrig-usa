@@ -1,123 +1,299 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Unrig USA — The Digital Proclamation</title>
-  <meta name="description" content="A nonpartisan Pending 501(c)(4) movement to restore constitutional accountability and end corruption in American government.">
-  <link rel="icon" type="image/png" href="/assets/logos/Favicon_UUSA_Trans.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/federalist.css">
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>UNRIG USA | The Digital Proclamation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: "Public Sans", sans-serif;
+            background-color: #fcf9f2;
+            color: #1c1c18;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDnZuiwM9a5ctmWBGnito1AWF-HtNdP-UxcuGsx1-H2PsxQg-9i9-erKYjJjwuEXt1Z9DXzTxdUMW1mAF-3i0fVn7Iu1YMlIzX2EK4NC6U4Fj0Fel0E8pgyUfZsqdt7XeEaLZ4f0bzFrk5dWcrulxIINDgi6_GQmr8bvnkFXb549r-cU3up6UyR4pgKAnH_h3WzAaK1RTkyQvPdshXYGn4-YkaaNdSgftHAHxjy5jKY-OEstbXfDVjIoysOhvlIDsaq3a_qEWuopbE)
+        }
+        .serif-display {
+            font-family: "Newsreader", serif
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#405c9e",
+                        "primary-fixed": "#dae2ff",
+                        "outline-variant": "#c4c6d2",
+                        "surface-container-low": "#f6f3ec",
+                        "on-tertiary-container": "#7d94bb",
+                        "on-secondary-fixed-variant": "#920021",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#de2a43",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#274484",
+                        "secondary": "#ba022d",
+                        "on-surface-variant": "#444650",
+                        "on-primary-fixed": "#001946",
+                        "surface-variant": "#e5e2db",
+                        "on-background": "#1c1c18",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001b3c",
+                        "primary-container": "#002868",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary": "#00153e",
+                        "tertiary-container": "#132c4e",
+                        "background": "#fcf9f2",
+                        "tertiary-fixed-dim": "#b0c7f1",
+                        "surface-container-highest": "#e5e2db",
+                        "secondary-fixed": "#ffdad9",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary-fixed-variant": "#30476a",
+                        "on-surface": "#1c1c18",
+                        "inverse-on-surface": "#f3f0e9",
+                        "on-secondary-fixed": "#400009",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#d5e3ff",
+                        "surface": "#fcf9f2",
+                        "inverse-primary": "#b1c5ff",
+                        "surface-bright": "#fcf9f2",
+                        "tertiary": "#001734",
+                        "surface-container-high": "#ebe8e1",
+                        "secondary-fixed-dim": "#ffb3b3",
+                        "on-primary-container": "#7792d7",
+                        "surface-container": "#f1eee7",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcdad3",
+                        "inverse-surface": "#31312c",
+                        "outline": "#747781"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                },
+            },
+        }
+    </script>
 </head>
-<body>
-  <div data-include="/partials/header.html"></div>
-
-  <main>
-    <!-- HERO -->
-    <section class="section">
-      <div class="container-page" style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" id="hero-grid">
-        <div>
-          <div class="section-label" style="margin-bottom:1.25rem;">A Digital Proclamation · 2026</div>
-          <h1 class="display-lg" style="margin-bottom:1.5rem;">
-            The system is <span style="text-transform:uppercase;">RIGGED</span>.
-            <span class="italic-red">Revolution Required.</span>
-          </h1>
-          <p class="body-lg muted" style="max-width:60ch; margin-bottom:2rem;">
-            We the People are welcoming our sovereignty. The Declaration of Independence demands an end to destructive systems and the duty to provide new Guards for our future security.
-          </p>
-          <div style="display:flex; flex-wrap:wrap; gap:1rem;">
-            <a href="/safeguards.html" class="btn-primary">Read the Safeguards</a>
-            <a href="/action.html" class="btn-secondary">Join the Movement</a>
-          </div>
-          <div class="numeric-tag" style="margin-top:2.5rem;">¶ No. 02</div>
-        </div>
-        <div style="position:relative;">
-          <div class="hero-frame hero-frame--portrait">
-            <picture>
-              <source media="(max-width: 640px)" type="image/webp" srcset="/assets/images/hero-home-mobile.webp">
-              <source media="(max-width: 640px)" srcset="/assets/images/hero-home-mobile.jpg">
-              <source type="image/webp" srcset="/assets/images/hero-home-desktop.webp">
-              <img src="/assets/images/hero-home-desktop.jpg" alt="The U.S. Capitol at sunset" loading="eager">
-            </picture>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- UNITE & UNRIG -->
-    <section class="section-tight" style="background: var(--surface-container-low);">
-      <div class="container-page" style="padding-top:4rem; padding-bottom:4rem;">
-        <div class="section-label" style="margin-bottom:0.5rem;">Execution Strategy</div>
-        <h2 class="display-md" style="margin-bottom:3rem;">Unite &amp; Unrig.</h2>
-
-        <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;" id="unite-grid">
-          <div class="card-elevated">
-            <div class="card-numeral">1. UNITE</div>
-            <h3 class="headline-md" style="margin-bottom:1rem;">Building a coalition that crosses every line.</h3>
-            <p class="body-md" class="muted">
-              We're a Pending 501(c)(4) nonpartisan movement. Independents, Republicans, Democrats, and the unaffiliated all have a stake. Corruption isn't left or right — it's up against everyone else.
-            </p>
-          </div>
-          <div class="card-elevated">
-            <div class="card-numeral">2. UNRIG</div>
-            <h3 class="headline-md" style="margin-bottom:1rem;">A comprehensive set of Anti-Corruption Safeguards.</h3>
-            <p class="body-md" class="muted">
-              We've built a structured framework of reforms that remove incentives for corruption regardless of which party is in power. Read the safeguards, then help us pressure officials to enact them.
-            </p>
-          </div>
-          <div class="ink-card" style="padding:1.75rem; border-radius:0.375rem;">
-            <div class="card-numeral">3. UNRIG</div>
-            <h3 class="headline-md" style="margin-bottom:1rem;">A constitutional framework, built to last.</h3>
-            <p class="body-md" style="opacity:0.85;">
-              The Unrig Amendments are designed to outlast any one administration. Structural reform, not partisan revenge.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN PROCLAMATION -->
-    <section class="section">
-      <div class="container-page" style="text-align:center;">
-        <h2 class="display-md" style="margin-bottom:1rem;">Join the Digital Proclamation.</h2>
-        <p class="body-lg muted" style="max-width:55ch; margin:0 auto 2.5rem;">
-          One signature. One commitment. One step toward a government that answers to its people.
-        </p>
-        <form id="hero-signup" style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; max-width:520px; margin:0 auto;">
-          <input type="email" required placeholder="Your email address" id="hero-email" class="input-underline" style="flex:1; min-width:240px;">
-          <button class="btn-primary" type="submit">Sign On</button>
-        </form>
-        <div id="hero-signup-msg" class="muted" style="font-size:0.85rem; margin-top:1rem; min-height:1em;"></div>
-      </div>
-    </section>
-  </main>
-
-  <div data-include="/partials/footer.html"></div>
-
-  <style>
-    @media (min-width: 900px) {
-      #hero-grid { grid-template-columns: 1.3fr 1fr !important; gap: 5rem !important; }
-      #unite-grid { grid-template-columns: repeat(3, 1fr) !important; }
-    }
-  </style>
-
-  <script>
-    document.addEventListener('submit', function (e) {
-      if (e.target.id !== 'hero-signup') return;
-      e.preventDefault();
-      var msg = document.getElementById('hero-signup-msg');
-      var email = document.getElementById('hero-email').value.trim();
-      if (!email) return;
-      msg.textContent = 'Joining...';
-      fetch('https://n8n.cloudpublica.org/webhook/unrig-signup', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
-      }).then(function () { msg.textContent = 'Thanks for joining.'; document.getElementById('hero-email').value=''; })
-        .catch(function () { msg.textContent = "Couldn't reach the server."; });
-    });
-  </script>
-  <script src="/assets/js/include.js"></script>
-</body>
-</html>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<div class="grain-overlay"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#fcf9f2] dark:bg-stone-950/85 backdrop-blur-md shadow-[0_20px_40px_rgba(28,28,24,0.06)]">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black uppercase tracking-widest text-[#002868] dark:text-blue-500 font-serif italic" style="">
+                UNRIG USA
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#1c1c18] dark:text-stone-300 font-medium hover:text-[#ba022d] transition-colors font-serif italic tracking-tight" href="#" style="">About</a>
+<a class="text-[#1c1c18] dark:text-stone-300 font-medium hover:text-[#ba022d] transition-colors font-serif italic tracking-tight" href="#" style="">Campaigns</a>
+<a class="text-[#1c1c18] dark:text-stone-300 font-medium hover:text-[#ba022d] transition-colors font-serif italic tracking-tight" href="#" style="">UNITE</a>
+<a class="text-[#1c1c18] dark:text-stone-300 font-medium hover:text-[#ba022d] transition-colors font-serif italic tracking-tight" href="#" style="">UNRIG</a>
+<a class="text-[#1c1c18] dark:text-stone-300 font-medium hover:text-[#ba022d] transition-colors font-serif italic tracking-tight" href="#" style="">Join</a>
+</div>
+<button class="bg-primary hover:opacity-80 transition-opacity duration-300 text-on-primary px-8 py-3 rounded-lg font-label uppercase tracking-widest text-xs font-bold border-b-2 border-secondary shadow-lg" style="">
+                Take Action
+            </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center px-6 md:px-12 overflow-hidden bg-surface">
+<div class="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 z-10">
+<div class="inline-flex items-center gap-2 mb-6 bg-surface-container-highest px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-secondary scale-75" style="font-variation-settings: &quot;FILL&quot; 1;">history_edu</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-primary" style="">The Modern Federalist Movement</span>
+</div>
+<h1 class="serif-display text-6xl md:text-8xl font-black leading-[0.9] text-primary tracking-tighter mb-8" style="">The system is <span class="uppercase" style="">RIGGED</span>. <span class="italic text-secondary" style="">Revolution Required.</span></h1>
+<div class="flex flex-col gap-6 mb-12">
+<p class="text-xl md:text-2xl text-on-surface-variant font-body max-w-2xl leading-relaxed" style="">We the People are reclaiming our sovereignty. The Declaration of Independence demands we abolish destructive systems and "<u>to provide new Guards for their future security.</u>"</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-6 items-start">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-md font-label uppercase tracking-widest text-sm font-bold border-b-2 border-secondary scale-100 hover:scale-[1.02] transition-transform shadow-[0_20px_40px_rgba(28,28,24,0.1)]" style="">
+                            Sign the Proclamation
+                        </button>
+<div class="flex flex-col">
+<span class="font-headline italic text-3xl text-primary font-bold" style="">2,184,902</span>
+<span class="font-label text-[10px] uppercase tracking-widest opacity-60" style="">Active Signers &amp; Patriots</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden relative shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700">
+<img alt="Historical Architecture" class="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgRUJ1Bqz9TU09H5aiBXQlEF5kHjDWkPIaRdFrUvnAoE4w-dLiYSiYkPsCVGLv9gZy_2F47PCanBLn6TpIGmhufwezIy-vs-HgDJpbP8he7Mp5IoGD0Qtxzrv5gYatqSoUjLkrrvThd1H9YcJaOgWE-6YBScDS5fINWYssfNqywquAzHleJl5_LrJ2DdhVZ8hz1-gS-a2eJhQi2jpuq9qH5UPCd0npGMMZ9LGDWnfMR_SWVr38B-JWVAiCHwSdKsIYH_q-m0L5PvQ" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -bottom-8 -left-8 w-48 h-48 border-outline/15 border-8 rounded-full pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- The Execution Strategy Sections -->
+<section class="py-32 px-6 md:px-12 bg-surface-container-low">
+<div class="max-w-screen-2xl mx-auto">
+<div class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-3xl">
+<h2 class="font-label text-xs font-bold uppercase tracking-[0.4em] text-secondary mb-6" style="">Execution Strategy</h2>
+<h3 class="serif-display text-5xl md:text-6xl font-bold leading-tight text-primary" style="">Unite &amp; Unrig</h3>
+</div>
+<p class="font-body text-on-surface-variant max-w-sm italic border-l-2 border-outline-variant pl-6" style="">
+                        "A house divided against itself cannot stand, but a system unrigged by We The People cannot fail."
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Pillar 1: UNITE -->
+<div class="md:col-span-5 bg-surface p-12 flex flex-col justify-between group hover:bg-primary transition-colors duration-500">
+<div>
+<div class="w-16 h-16 rounded-full border border-outline-variant flex items-center justify-center mb-12 group-hover:border-on-primary/30">
+<span class="material-symbols-outlined text-secondary text-3xl group-hover:text-on-primary" style="">group_work</span>
+</div>
+<h4 class="font-headline text-4xl italic font-black mb-6 group-hover:text-on-primary" style="">1. UNITE</h4>
+<p class="text-on-surface-variant group-hover:text-on-primary/80 leading-relaxed text-lg mb-8" style="">
+                                Building the most formidable alliance in American history. We bypass partisan traps to mobilize via two primary methods:
+                            </p>
+<ul class="space-y-4 font-body text-on-surface-variant group-hover:text-on-primary/90">
+<li class="flex items-start gap-4" style="">
+<span class="font-bold text-secondary group-hover:text-on-primary text-xl" style="">A.</span>
+<span class="" style=""><strong>People power</strong> – Directly engaging the citizenry outside the traditional political machinery.</span>
+</li>
+<li class="flex items-start gap-4" style="">
+<span class="font-bold text-secondary group-hover:text-on-primary text-xl" style="">B.</span>
+<span class="" style=""><strong>The anticorruption coalition</strong> – A united front of organizations and individuals dedicated to systemic reform.</span>
+</li>
+</ul>
+</div>
+<div class="mt-12 flex items-center gap-4 text-primary group-hover:text-on-primary font-label text-xs uppercase tracking-widest font-bold" style="">
+                            Join the fight<span class="material-symbols-outlined text-sm" style="">arrow_forward</span>
+</div>
+</div>
+<!-- Pillar 2: UNRIG -->
+<div class="md:col-span-7 flex flex-col gap-8">
+<!-- UNRIG Part 1: Protections -->
+<div class="bg-surface-container-highest p-12 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h4 class="font-headline text-4xl italic font-black" style="">2. UNRIG</h4>
+<p class="font-label font-bold uppercase tracking-widest text-secondary mt-2 text-base" style="">Branch I: Protections</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: &quot;FILL&quot; 1;">security</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4">
+<div class="space-y-4">
+<h5 class="font-label text-[10px] font-bold uppercase tracking-widest text-secondary" style="">A. The Anti-Corruption Safeguards</h5>
+<p class="text-sm leading-relaxed text-on-surface-variant" style="">
+                                    Implementing common-sense solutions and People's checks &amp; balances to secure election integrity and ensure equal justice for all.
+                                </p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label text-[10px] font-bold uppercase tracking-widest text-secondary" style="">B. Amendments</h5>
+<p class="text-sm leading-relaxed text-on-surface-variant" style="">
+                                    Constitutional anchors designed to permanently seal the loopholes used by special interests to drain the national wealth.
+                                </p>
+</div>
+</div>
+</div>
+<!-- UNRIG Part 2: Prosecutions (Now Integrated) -->
+<div class="bg-primary text-on-primary p-12 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h4 class="font-headline text-4xl italic font-black" style="">2. UNRIG</h4>
+<p class="font-label font-bold uppercase tracking-widest text-secondary mt-2 text-base" style="">Branch II: Prosecutions</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-4xl" style="">gavel</span>
+</div>
+<p class="text-lg text-on-primary/80 leading-relaxed mb-6" style="">
+                            An Independent Commission with teeth. Our mandate is clear: identify and prosecute corrupt politicians, pedophiles, and propagandists who have compromised the public trust.
+                        </p>
+<div class="flex items-center gap-4 text-secondary font-label text-xs uppercase tracking-widest font-bold cursor-pointer hover:opacity-80 transition-opacity" style="">REVIEW THE SAFEGUARDS <span class="material-symbols-outlined text-sm" style="">arrow_forward</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Join Section -->
+<section class="py-24 px-6 md:px-12 bg-surface">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="serif-display text-4xl md:text-5xl font-bold mb-8" style="">Join the Movement</h2>
+<p class="font-body text-on-surface-variant mb-12" style="">
+                    Enter your email to receive mobilization alerts and the "Unrig Blueprint" PDF. We do not sell data; we build movements for We The People.
+                </p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input class="flex-grow bg-transparent border-b border-outline/30 focus:border-secondary focus:ring-0 px-4 py-4 font-label text-xs tracking-widest outline-none transition-all" placeholder="YOUR EMAIL ADDRESS" type="email">
+<button class="bg-primary text-on-primary px-10 py-4 font-label uppercase tracking-widest text-xs font-bold border-b-2 border-secondary whitespace-nowrap" type="submit" style="">
+                        Mobilize Me
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-[#f6f3ec] dark:bg-stone-900 border-t border-[#1c1c18]/15">
+<div class="w-full px-12 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-screen-2xl mx-auto">
+<div class="space-y-6">
+<div class="font-serif italic text-lg text-[#002868] font-bold uppercase tracking-widest" style="">UNRIG USA</div>
+<p class="font-sans text-sm tracking-normal text-[#1c1c18]/70 dark:text-stone-500 max-w-xs" style="">
+                    © 1787-2024 UNRIG USA. All Rights Reserved. Built for We The People.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-[10px] font-bold uppercase tracking-widest text-primary" style="">The Blueprint</h4>
+<ul class="space-y-2">
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors underline decoration-[#ba022d]" href="#" style="">About the Org</a></li>
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors" href="#" style="">About the Team</a></li>
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors" href="#" style="">Anti-Corruption Safeguards</a></li>
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors" href="#" style="">Unrig Amendments</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-[10px] font-bold uppercase tracking-widest text-primary" style="">Accountability</h4>
+<ul class="space-y-2">
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors" href="#" style="">Independent Commission</a></li>
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors" href="#" style="">Privacy Policy</a></li>
+<li class="" style=""><a class="text-[#1c1c18]/70 dark:text-stone-500 font-sans text-sm hover:text-[#ba022d] transition-colors" href="#" style="">Transparency Log</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<!-- Side Navigation Shell (Hidden on Mobile) -->
+<aside class="hidden xl:flex fixed left-0 top-0 h-screen w-20 flex-col items-center py-12 gap-12 bg-transparent pointer-events-none z-40">
+<div class="flex flex-col gap-8 pointer-events-auto bg-surface-container-low/80 backdrop-blur-sm p-4 rounded-full border border-outline-variant/10 shadow-xl">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#" title="About" style="">
+<span class="material-symbols-outlined" style="">info</span>
+</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#" title="Campaigns" style="">
+<span class="material-symbols-outlined" style="">campaign</span>
+</a>
+<a class="text-secondary font-bold" href="#" title="UNITE Pillar" style="">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">group_work</span>
+</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#" title="UNRIG Pillar" style="">
+<span class="material-symbols-outlined" style="">gavel</span>
+</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#" title="Join" style="">
+<span class="material-symbols-outlined" style="">person_add</span>
+</a>
+</div>
+</aside>
+</body></html>
