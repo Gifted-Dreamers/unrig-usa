@@ -352,3 +352,51 @@ footer .footer-link { color: var(--on-primary); }
 /* Page-header section padding (replaces padding-top:4rem; padding-bottom:3rem on every page) */
 .page-header { padding: 4rem 0 3rem; }
 .page-header--tight { padding: 4rem 0 2rem; }
+
+
+/* FAQ accordion */
+.faq-item {
+  border-top: 1px solid rgba(28, 28, 24, 0.14);
+  padding: 1rem 0;
+}
+
+.faq-item:last-of-type {
+  border-bottom: 1px solid rgba(28, 28, 24, 0.14);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 1.25rem;
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after {
+  content: '–';
+}
+
+.faq-answer {
+  padding-top: 0.9rem;
+  line-height: 1.7;
+  color: var(--on-surface-muted);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  font-size: 1rem;
+}
